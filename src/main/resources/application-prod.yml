@@ -1,4 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb+srv://boot-user:boot@springbootexample-nysvl.mongodb.net/spring-mongo-example?retryWrites=true&w=majority

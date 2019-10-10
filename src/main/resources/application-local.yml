@@ -1,4 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb://boot_user:boot@localhost:27017/us_zipcode
