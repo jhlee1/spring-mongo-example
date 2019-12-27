@@ -5,6 +5,7 @@ import java.util.Optional;
 import lee.joohan.springmongoexample.domain.Customer;
 import lee.joohan.springmongoexample.domain.exception.CustomerNotFoundException;
 import lee.joohan.springmongoexample.interfaces.request.CreateCustomerRequest;
+import lee.joohan.springmongoexample.interfaces.request.EditCustomerRequest;
 import lee.joohan.springmongoexample.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,15 @@ public class CustomerService {
 
   public Customer createCustomer(CreateCustomerRequest createCustomerRequest) {
     Customer customer = createCustomerRequest.toCustomer();
+
+    return customerRepository.save(customer);
+  }
+  public Customer updateCustomer(String userId, EditCustomerRequest editCustomerRequest) {
+    Customer customer = customerRepository.findByUserId(userId);
+
+    Optional.ofNullable(editCustomerRequest.getAge()).ifPresent(customer::setAge);
+    Optional.ofNullable(editCustomerRequest.getFirstName()).ifPresent(customer::setFirstName);
+    Optional.ofNullable(editCustomerRequest.getLastName()).ifPresent(customer::setLastName);
 
     return customerRepository.save(customer);
   }

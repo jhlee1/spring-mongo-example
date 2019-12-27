@@ -1,8 +1,5 @@
 package lee.joohan.springmongoexample.repository;
 
-import static org.junit.Assert.*;
-
-import telegram.ExampleBot;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ZipCodeRepositoryTest {
 
   @Autowired
-  ExampleBot exampleBot;
-  @Autowired
   ZipCodeRepository zipCodeRepository;
 
   @Test
   public void groupByState() {
     System.out.println("ZipCode Repository: " + zipCodeRepository);
-//    System.out.println(zipCodeRepository.groupByState());
   }
 }
