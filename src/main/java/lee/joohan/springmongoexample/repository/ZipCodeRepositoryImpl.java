@@ -32,10 +32,6 @@ public class ZipCodeRepositoryImpl implements ZipCodeRepositoryCustom {
 
     Aggregation aggregation = newAggregation(groupByState, projectionOperation);
 
-    System.out.println(mongoTemplate.aggregate(aggregation, "zips", ZipCodeGroupedByState.class).getRawResults());
-
     return mongoTemplate.aggregate(aggregation, "zips", ZipCodeGroupedByState.class).getMappedResults();
-
-
   }
 }

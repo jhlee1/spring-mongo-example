@@ -34,7 +34,7 @@ public class CustomerService {
   }
 
   public Customer getCustomers(String firstName) {
-    return customerRepository.findByFirstName(firstName);
+    return customerRepository.findFirstByFirstName(firstName);
   }
 
   public List<Customer> getCustomers() {

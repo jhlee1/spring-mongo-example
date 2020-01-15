@@ -1,6 +1,7 @@
 package lee.joohan.springmongoexample.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
@@ -34,5 +35,6 @@ public class Customer {
     this.lastName = lastName;
     this.userId = UUID.randomUUID().toString();
     this.age = age;
+    createdAt = ZonedDateTime.now().toLocalDateTime();
   }
 }
