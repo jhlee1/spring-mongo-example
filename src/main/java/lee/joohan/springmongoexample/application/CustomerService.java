@@ -24,7 +24,8 @@ public class CustomerService {
     return customerRepository.save(customer);
   }
   public Customer updateCustomer(String userId, EditCustomerRequest editCustomerRequest) {
-    Customer customer = customerRepository.findByUserId(userId);
+    Customer customer = Optional.ofNullable(customerRepository.findByUserId(userId))
+        .orElseThrow(() -> new CustomerNotFoundException(userId));
 
     Optional.ofNullable(editCustomerRequest.getAge()).ifPresent(customer::setAge);
     Optional.ofNullable(editCustomerRequest.getFirstName()).ifPresent(customer::setFirstName);
