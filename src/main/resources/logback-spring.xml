@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+  <springProfile name="prod">
+    <property name="host" value="localhost:4560"/>
+    <property name="name" value="spring-mongo-prod"/>
+  </springProfile>
+
+  <springProfile name="local">
+    <property name="host" value="localhost:4560"/>
+    <property name="name" value="spring-mongo-local"/>
+  </springProfile>
+
+
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+      <destination>${host}</destination>
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <customFields>{"server":"${name}"}</customFields>
+      </encoder>
+    </appender>
+
+    <root level="INFO">
+      <appender-ref ref="stash"/>
+    </root>
+</configuration>
